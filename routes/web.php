@@ -11,6 +11,12 @@
 |
 */
 
+// Home Page
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('home');
+}) ->name('home');
+
+//Login Page
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
