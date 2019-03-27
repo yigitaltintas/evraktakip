@@ -9,7 +9,9 @@ class EvrakKategoriController extends Controller
 {
     // Document Categories
     public function index(){
-        return view('document-categories.all');
+        $evrak_kategoriler = EvrakKategori::all();
+
+        return view('document-categories.all', compact('evrak_kategoriler'));
     }
 
     // Add Document Category Form
