@@ -14,10 +14,15 @@ class Kullanici extends Authenticatable
 
     protected  $table = "user";
 
-    protected $fillable = ['adsoyad', 'email', 'sifre',];
+    protected $fillable = ['adsoyad', 'email', 'sifre'];
     protected $hidden = ['sifre'];
 
     const CREATED_AT = 'olusturulma_tarihi';
     const UPDATED_AT = 'guncellenme_tarihi';
     const DELETED_AT = 'silinme_tarihi';
+
+    public function getAuthPassword()
+    {
+        return $this -> sifre;
+    }
 }

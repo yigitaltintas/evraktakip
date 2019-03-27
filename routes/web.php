@@ -5,10 +5,10 @@ Route::get('/', function () {
     return view('home');
 }) ->name('home');
 
+// Login Form
+Route::get('/login', 'UserController@login')->name('login');
 // Login
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
+Route::post('/login', 'UserController@login_post');
 
 // Documents
 Route::prefix('documents')->group(function () {

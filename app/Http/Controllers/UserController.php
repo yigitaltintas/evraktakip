@@ -11,7 +11,6 @@ class UserController extends Controller
     // Users
     public function index(){
         $users = Kullanici::all();
-
         return view('users.all', compact('users'));
     }
 
@@ -41,4 +40,26 @@ class UserController extends Controller
     public function edit(){
         return view('users.edit');
     }
+
+    // Login Form
+    public function login(){
+            return view('login');
+    }
+
+    // Login
+    public function login_post(){
+        $this->validate(request(), [
+            'email' => 'required|email',
+            'parola' => 'required'
+        ]);
+
+        if(auth()->attempt(['email' => request('email'), 'password' => request('parola')], request()->has('remember'))){
+            request()->session()->regenerate();
+            return redirect()->intended('/');
+        }else{
+            $errors = ['email' => 'Hatalı giriş'];
+            return back()->withErrors($errors);
+        }
+    }
+
 }
