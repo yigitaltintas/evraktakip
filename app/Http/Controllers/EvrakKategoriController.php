@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EvrakKategori;
 use Illuminate\Http\Request;
 
 class EvrakKategoriController extends Controller
@@ -18,7 +19,15 @@ class EvrakKategoriController extends Controller
 
     // Add Document Category
     public function add_post(){
+        $this -> validate(request(), [
+            'evrak_kategori_adi' => 'required|min:3|unique:document_category'
+        ]);
 
+        $kategori = EvrakKategori::create([
+            'evrak_kategori_adi' => request('evrak_kategori_adi')
+        ]);
+
+        return redirect()->route('document-categories');
     }
 
     // Edit Document Category Form

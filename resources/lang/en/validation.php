@@ -148,6 +148,7 @@ return [
         'adsoyad' => 'Ad Soyad',
         'sifre' => 'Şifre',
         'email' => 'Email',
+        'evrak_kategori_adi' => 'Evrak kategori adı'
     ],
 
 ];
