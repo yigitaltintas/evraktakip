@@ -46,19 +46,15 @@ Route::prefix('documents')->group(function () {
 Route::prefix('document-categories')->group(function () {
 
     // Documents
-    Route::get('/', function () {
-        return view('document-categories.all');
-    })->name('document-categories');
+    Route::get('/', 'EvrakKategoriController@index')->name('document-categories');
 
     // Add Document
-    Route::get('/add', function () {
-        return view('document-categories.add');
-    })->name('add-document-categories');
+    Route::get('/add', 'EvrakKategoriController@add')->name('add-document-categories');
+    Route::post('/add', 'EvrakKategoriController@add_post');
 
     // Edit Document
-    Route::get('/edit/{id}', function () {
-        return view('document-categories.edit');
-    })->name('edit-document-categories');
+    Route::get('/edit/{id}', 'EvrakKategoriController@edit')->name('edit-document-categories');
+    Route::get('/edit/{id}', 'EvrakKategoriController@edit_put');
 
 });
 
@@ -66,20 +62,15 @@ Route::prefix('document-categories')->group(function () {
 Route::prefix('users')->group(function () {
 
     // Users
-    Route::get('/', function () {
-        return view('users.all');
-    })->name('users');
+    Route::get('/', 'UserController@index')->name('users');
 
-    // Add User
-    Route::get('/add', function () {
-        return view('users.add');
-    })->name('add-user');
-
+    // Add User Form
+    Route::get('/add', 'UserController@add')->name('add-user');
+    // Add User - POST
+    Route::post('/add', 'UserController@add_post');
 
     // Edit User
-    Route::get('/edit/{id}', function () {
-        return view('users.edit');
-    })->name('edit-user');
+    Route::get('/edit/{id}', 'UserController@edit')->name('edit-user');
 
 });
 

@@ -10,14 +10,25 @@
                                 <strong>Kullanıcı</strong> Ekle
                             </div>
                             <div class="card-body card-block">
-                                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                @include('layouts.partials.alerts.errors')
+                                <form action="{{ route('add-user') }}" method="post" class="form-horizontal">
+                                    {{ csrf_field() }}
                                     <div class="row form-group">
                                         <div class="col col-md-3">
-                                            <label for="text-input" class=" form-control-label">Kullanıcı Adı</label>
+                                            <label for="text-input" class=" form-control-label">Ad Soyad</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="text" id="text-input" name="text-input" placeholder="Evrak Başlığı" class="form-control" required>
+                                            <input type="text" id="text-input" name="adsoyad" placeholder="Ad Soyad" class="form-control" value="{{ old('adsoyad') }}" required>
                                             <small class="form-text text-muted">Kullanıcı adını belirtiniz.</small>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="text-input" class=" form-control-label">Email</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="email" id="text-input" name="email" placeholder="Email" class="form-control" value="{{ old('email') }}" required>
+                                            <small class="form-text text-muted">Email adresinizi belirtiniz.</small>
                                         </div>
                                     </div>
                                     <div class="row form-group">
@@ -25,18 +36,27 @@
                                             <label for="select" class=" form-control-label">Parola</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="password" name="password">
-                                            <small class="form-text text-muted">Parola</small>
+                                            <input type="password" name="sifre">
+                                            <small class="form-text text-muted">Parolanızı giriniz.</small>
                                         </div>
-
                                     </div>
-                                </form>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="select" class=" form-control-label">Parola Tekrarı</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="password" name="sifre_confirmation">
+                                            <small class="form-text text-muted">Parolanızı yeniden giriniz.</small>
+                                        </div>
+                                    </div>
+
                             </div>
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary btn-sm">
                                     <i class="fa fa-dot-circle-o"></i> Kaydet
                                 </button>
                             </div>
+                            </form>
                         </div>
                     </div>
                 </div>
