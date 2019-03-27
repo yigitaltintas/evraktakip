@@ -10,7 +10,9 @@ class UserController extends Controller
 {
     // Users
     public function index(){
-        return view('users.all');
+        $users = Kullanici::all();
+
+        return view('users.all', compact('users'));
     }
 
     // Add User Form
