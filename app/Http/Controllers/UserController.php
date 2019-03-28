@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Kullanici;
+use Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -38,10 +39,8 @@ class UserController extends Controller
 
     // Edit user
     public function edit($id){
-        $entry = new Kullanici();
-        if( $id > 0){
-            $entry = Kullanici::find($id);
-        }
+
+        $entry = Kullanici::find($id);
         return view('users.edit', compact('entry'));
     }
 
@@ -86,6 +85,9 @@ class UserController extends Controller
         ]);
 
         if(auth()->attempt(['email' => request('email'), 'password' => request('parola')], request()->has('remember'))){
+
+            Session::put('email', request('email'));
+
             request()->session()->regenerate();
             return redirect()->intended('/');
         }else{

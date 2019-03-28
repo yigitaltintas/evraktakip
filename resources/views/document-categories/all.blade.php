@@ -28,12 +28,12 @@
                                     <td>{{ $kategori -> evrak_kategori_adi }}</td>
                                     <td>
                                         <div class="table-data-feature">
-                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Düzenle">
+                                            <a href="{{ route('edit-document-categories', $kategori -> id) }}" class="item" data-toggle="tooltip" data-placement="top" title="Düzenle">
                                                 <i class="zmdi zmdi-edit"></i>
-                                            </button>
-                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Sil">
+                                            </a>
+                                            <a href="{{ route('delete-document-categories', $kategori -> id) }}" class="item" data-toggle="tooltip" data-placement="top" title="Sil" onclick="return confirm('Emin Misiniz?')">
                                                 <i class="zmdi zmdi-delete"></i>
-                                            </button>
+                                            </a>
                                         </div>
                                     </td>
                                 </tr>

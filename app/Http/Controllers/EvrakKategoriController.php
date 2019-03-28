@@ -33,13 +33,31 @@ class EvrakKategoriController extends Controller
     }
 
     // Edit Document Category Form
-    public function edit(){
-        return redirect()->route('edit-document');
+    public function edit($id){
+
+        $entry = EvrakKategori::find($id);
+        return view('document-categories.edit', compact('entry'));
     }
 
     // Edit Document Category
-    public function edit_post(){
-        return view('document-categories.edit');
+    public function edit_post($id){
+        $this -> validate(request(), [
+            'evrak_kategori_adi' => 'required|min:3|unique:document_category'
+        ]);
+
+        $data  = request()->only('evrak_kategori_adi');
+
+        $entry = EvrakKategori::where('id', $id);
+        $entry -> update($data);
+
+        return redirect()->route('document-categories');
+    }
+
+    // Delete Document Category
+    public function delete($id){
+        EvrakKategori::destroy($id);
+
+        return redirect()->route('document-categories');
     }
 }
 

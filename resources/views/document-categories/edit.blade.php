@@ -10,23 +10,26 @@
                                 <strong>Evrak Kategorisi</strong> Düzenle
                             </div>
                             <div class="card-body card-block">
-                                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                <form action="{{ route('add-document-categories') }}" method="post" class="form-horizontal">
+                                    {{ csrf_field() }}
+                                    @include('layouts.partials.alerts.errors')
                                     <div class="row form-group">
                                         <div class="col col-md-3">
                                             <label for="text-input" class=" form-control-label">Kategori Başlık</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="text" id="text-input" name="text-input" placeholder="Evrak Başlığı" class="form-control" required>
+                                            <input type="text" id="text-input" name="evrak_kategori_adi" placeholder="Evrak Başlığı" class="form-control" value = "{{  old('evrak_kategori_adi', $entry -> evrak_kategori_adi)  }}" required>
                                             <small class="form-text text-muted">Kategori başlığını belirtiniz.</small>
                                         </div>
                                     </div>
-                                </form>
+
                             </div>
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary btn-sm">
                                     <i class="fa fa-dot-circle-o"></i> Güncelle
                                 </button>
                             </div>
+                            </form>
                         </div>
                     </div>
                 </div>
