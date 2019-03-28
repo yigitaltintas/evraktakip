@@ -34,8 +34,11 @@
                                             <i class="zmdi zmdi-account"></i>Hesap Ayarları</a>
                                     </div>
                                     <div class="account-dropdown__footer">
-                                        <a href="#">
+                                        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">
                                             <i class="zmdi zmdi-power"></i>Oturum Kapat</a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none">
+                                        {{ csrf_field() }}
+                                        </form>
                                     </div>
                                 </div>
                             </div>

@@ -32,12 +32,12 @@
                                     </td>
                                     <td>
                                         <div class="table-data-feature">
-                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                            <a href="{{ route('edit-user', $user -> id) }}" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                                                 <i class="zmdi zmdi-edit"></i>
-                                            </button>
-                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                            </a>
+                                            <a href="{{ route('delete-user', $user -> id) }}" class="item" title="Delete" onclick="return confirm('Emin misiniz ?')">
                                                 <i class="zmdi zmdi-delete"></i>
-                                            </button>
+                                            </a>
                                         </div>
                                     </td>
                                 </tr>

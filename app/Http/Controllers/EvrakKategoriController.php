@@ -34,11 +34,11 @@ class EvrakKategoriController extends Controller
 
     // Edit Document Category Form
     public function edit(){
-        return view('document-categories.edit');
+        return redirect()->route('edit-document');
     }
 
     // Edit Document Category
-    public function edit_put(){
+    public function edit_post(){
         return view('document-categories.edit');
     }
 }

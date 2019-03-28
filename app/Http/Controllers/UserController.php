@@ -33,12 +33,44 @@ class UserController extends Controller
             'sifre' => Hash::make(request('sifre'))
         ]);
 
-        return redirect()->route('home');
+        return redirect()->route('users');
     }
 
     // Edit user
-    public function edit(){
-        return view('users.edit');
+    public function edit($id){
+        $entry = new Kullanici();
+        if( $id > 0){
+            $entry = Kullanici::find($id);
+        }
+        return view('users.edit', compact('entry'));
+    }
+
+    // Edit user Put
+    public function edit_post($id){
+
+        $this -> validate(request(),[
+            'adsoyad' => 'required',
+            'email' => 'required|email'
+        ]);
+
+        $data  = request()->only('adsoyad', 'email');
+
+        if(request()->filled('sifre')){
+            $data['sifre'] = Hash::make(request('sifre'));
+        }
+
+        $entry = Kullanici::where('id', $id);
+        $entry -> update($data);
+
+        return redirect()->route('edit-user', $id);
+    }
+
+    // Delete User
+    public function delete($id){
+
+        Kullanici::destroy($id);
+
+        return redirect()->route('users');
     }
 
     // Login Form
@@ -60,6 +92,14 @@ class UserController extends Controller
             $errors = ['email' => 'Hatalı giriş'];
             return back()->withErrors($errors);
         }
+    }
+
+    // Logout
+    public function logout(){
+        auth()->logout();
+        request()->session()->flush();
+        request()->session()->regenerate();
+        return redirect('login');
     }
 
 }

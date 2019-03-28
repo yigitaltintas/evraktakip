@@ -1,67 +1,75 @@
 <?php
 
-// Home
-Route::get('/', function () {
-    return view('home');
-}) ->name('home');
+Route::group(['middleware' => 'guest'], function (){
+    // Login Form
+    Route::get('/login', 'UserController@login')->name('login');
+    // Login
+    Route::post('/login', 'UserController@login_post');
+});
 
-// Login Form
-Route::get('/login', 'UserController@login')->name('login');
-// Login
-Route::post('/login', 'UserController@login_post');
-
-// Documents
-Route::prefix('documents')->group(function () {
-
-    // Documents
+Route::group(['middleware' => 'auth'], function(){
+    // Home
     Route::get('/', function () {
-        return view('documents.all');
-    })->name('documents');
-
-    // Add Document
-    Route::get('/add', function () {
-        return view('documents.add');
-    })->name('add-document');
-
-
-    // Edit Document
-    Route::get('/edit/{id}', function () {
-        return view('documents.edit');
-    })->name('edit-document');
-
-});
-
-// Document Categories
-Route::prefix('document-categories')->group(function () {
+        return view('home');
+    }) ->name('home');
 
     // Documents
-    Route::get('/', 'EvrakKategoriController@index')->name('document-categories');
+    Route::prefix('documents')->group(function () {
 
-    // Add Document
-    Route::get('/add', 'EvrakKategoriController@add')->name('add-document-categories');
-    Route::post('/add', 'EvrakKategoriController@add_post');
+        // Documents
+        Route::get('/', function () {
+            return view('documents.all');
+        })->name('documents');
 
-    // Edit Document
-    Route::get('/edit/{id}', 'EvrakKategoriController@edit')->name('edit-document-categories');
-    Route::get('/edit/{id}', 'EvrakKategoriController@edit_put');
+        // Add Document
+        Route::get('/add', function () {
+            return view('documents.add');
+        })->name('add-document');
 
-});
 
-// Users
-Route::prefix('users')->group(function () {
+        // Edit Document
+        Route::get('/edit/{id}', function () {
+            return view('documents.edit');
+        })->name('edit-document');
+
+    });
+
+    // Document Categories
+    Route::prefix('document-categories')->group(function () {
+
+        // Documents
+        Route::get('/', 'EvrakKategoriController@index')->name('document-categories');
+
+        // Add Document
+        Route::get('/add', 'EvrakKategoriController@add')->name('add-document-categories');
+        Route::post('/add', 'EvrakKategoriController@add_post');
+
+        // Edit Document
+        Route::get('/edit/{id}', 'EvrakKategoriController@edit')->name('edit-document-categories');
+        Route::put('/edit', 'EvrakKategoriController@edit_put');
+
+    });
 
     // Users
-    Route::get('/', 'UserController@index')->name('users');
+    Route::prefix('users')->group(function () {
 
-    // Add User Form
-    Route::get('/add', 'UserController@add')->name('add-user');
-    // Add User - POST
-    Route::post('/add', 'UserController@add_post');
+        // Users
+        Route::get('/', 'UserController@index')->name('users');
 
-    // Edit User
-    Route::get('/edit/{id}', 'UserController@edit')->name('edit-user');
+        // Add User Form
+        Route::get('/add', 'UserController@add')->name('add-user');
+        // Add User - POST
+        Route::post('/add', 'UserController@add_post');
 
+        // Edit User
+        Route::get('/edit/{id}', 'UserController@edit')->name('edit-user');
+        // Edit User Post
+        Route::post('/edit/{id}', 'UserController@edit_post');
+
+        // Delete User
+        Route::get('/delete/{id}', 'UserController@delete')->name('delete-user');
+    });
+
+    // Logout
+    Route::post('/logout','UserController@logout')->name('logout');
 });
-
-
-
