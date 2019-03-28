@@ -10,7 +10,7 @@
                                 <strong>Evrak Kategorisi</strong> Düzenle
                             </div>
                             <div class="card-body card-block">
-                                <form action="{{ route('add-document-categories') }}" method="post" class="form-horizontal">
+                                <form action="{{ route('edit-document-categories', $entry -> id) }}" method="post" class="form-horizontal">
                                     {{ csrf_field() }}
                                     @include('layouts.partials.alerts.errors')
                                     <div class="row form-group">

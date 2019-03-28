@@ -46,7 +46,7 @@ Route::group(['middleware' => 'auth'], function(){
 
         // Edit Document
         Route::get('/edit/{id}', 'EvrakKategoriController@edit')->name('edit-document-categories');
-        Route::post('/edit/{id}', 'EvrakKategoriController@edit_put');
+        Route::post('/edit/{id}', 'EvrakKategoriController@edit_post');
 
         // Delete Document
         Route::get('/delete/{id}', 'EvrakKategoriController@delete')->name('delete-document-categories');
