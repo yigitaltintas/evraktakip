@@ -10,8 +10,8 @@ class EvrakController extends Controller
 {
     // Documents
     public function index(){
-        $evraklar = Evrak::all();
-        return view('documents.all');
+        $evraklar = Evrak::orderBy('id', 'desc')->get();
+        return view('documents.all', compact('evraklar'));
     }
 
     // Add Document

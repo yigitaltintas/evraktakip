@@ -17,4 +17,5 @@ class Evrak extends Model
     CONST CREATED_AT = 'olusturulma_tarihi';
     CONST UPDATED_AT = 'guncellenme_tarihi';
     CONST DELETED_AT = 'silinme_tarihi';
+
 }
