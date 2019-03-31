@@ -3,17 +3,18 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class EvrakKategori extends Model
+class Evrak extends Model
 {
+    //
+    use SoftDeletes;
 
-    protected $table = 'document_category';
+    protected $table = 'document';
 
-    protected $fillable = ['evrak_kategori_adi'];
+    protected $guarded = [];
 
     CONST CREATED_AT = 'olusturulma_tarihi';
     CONST UPDATED_AT = 'guncellenme_tarihi';
     CONST DELETED_AT = 'silinme_tarihi';
-
-
 }

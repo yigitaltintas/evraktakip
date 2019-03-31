@@ -17,15 +17,13 @@ Route::group(['middleware' => 'auth'], function(){
     Route::prefix('documents')->group(function () {
 
         // Documents
-        Route::get('/', function () {
-            return view('documents.all');
-        })->name('documents');
+        Route::get('/', 'EvrakController@index')->name('documents');
 
         // Add Document
-        Route::get('/add', function () {
-            return view('documents.add');
-        })->name('add-document');
+        Route::get('/add', 'EvrakController@add')->name('add-document');
 
+        // Add Document Post
+        Route::post('/add', 'EvrakController@add_post');
 
         // Edit Document
         Route::get('/edit/{id}', function () {
