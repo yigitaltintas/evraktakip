@@ -26,9 +26,13 @@ Route::group(['middleware' => 'auth'], function(){
         Route::post('/add', 'EvrakController@add_post');
 
         // Edit Document
-        Route::get('/edit/{id}', function () {
-            return view('documents.edit');
-        })->name('edit-document');
+        Route::get('/edit/{id}', 'EvrakController@edit')->name('edit-document');
+
+        // Edit Document Post
+        Route::post('/edit/{id}', 'EvrakController@edit_post');
+
+        // Delete Document
+        Route::get('/delete/{id}', 'EvrakController@delete')->name('delete-document');
 
     });
 

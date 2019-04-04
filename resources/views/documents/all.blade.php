@@ -34,10 +34,10 @@
                                     <td>
                                         <div class="table-data-feature">
 
-                                            <a class="item" data-toggle="tooltip" data-placement="top" title="Düzenle">
+                                            <a href="{{ route('edit-document', $evrak -> id) }}"class="item" data-toggle="tooltip" data-placement="top" title="Düzenle">
                                                 <i class="zmdi zmdi-edit"></i>
                                             </a>
-                                            <a class="item" data-toggle="tooltip" data-placement="top" title="Sil">
+                                            <a href="{{ route('delete-document', $evrak -> id) }}" class="item" data-toggle="tooltip" data-placement="top" title="Sil" onclick="return confirm('Emin Misiniz?')">
                                                 <i class="zmdi zmdi-delete"></i>
                                             </a>
 

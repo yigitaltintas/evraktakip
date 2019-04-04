@@ -10,7 +10,7 @@
                                 <strong>Evrak Kategorisi</strong> Düzenle
                             </div>
                             <div class="card-body card-block">
-                                <form action="{{ route('edit-document-categories', $entry -> id) }}" method="post" class="form-horizontal">
+                                <form action="{{ route('edit-document', $entry -> id) }}" method="post" class="form-horizontal">
                                     {{ csrf_field() }}
                                     @include('layouts.partials.alerts.errors')
                                     <div class="row form-group">
@@ -22,7 +22,6 @@
                                             <small class="form-text text-muted">Kategori başlığını belirtiniz.</small>
                                         </div>
                                     </div>
-
                             </div>
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary btn-sm">
