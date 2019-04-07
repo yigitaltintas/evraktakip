@@ -19,6 +19,7 @@ class CreateUserTable extends Migration
             $table->string('email', 150)-> unique();
             $table->string('sifre', 60);
             $table->rememberToken();
+            $table->string('api_token', 60)->unique()->nullable();
             $table->timestamp('olusturulma_tarihi')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('guncellenme_tarihi')->default(DB::raw('CURRENT_TIMESTAMP on UPDATE CURRENT_TIMESTAMP'));
             $table->timestamp('silinme_tarihi')->nullable();

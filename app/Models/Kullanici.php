@@ -15,7 +15,7 @@ class Kullanici extends Authenticatable
     protected  $table = "user";
 
     protected $fillable = ['adsoyad', 'email', 'sifre'];
-    protected $hidden = ['sifre'];
+    protected $hidden = ['sifre', 'remember_token', 'api_token'];
 
     const CREATED_AT = 'olusturulma_tarihi';
     const UPDATED_AT = 'guncellenme_tarihi';
