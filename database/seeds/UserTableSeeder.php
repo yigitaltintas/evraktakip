@@ -17,7 +17,7 @@ class UserTableSeeder extends Seeder
 
         DB::table('user')->insert([
             'adsoyad' => 'Yigit ALTINTAS',
-            'email' => 'admin@yigit.com',
+            'email' => 'admin@bi.com',
             'sifre' => Hash::make('admin'),
         ]);
 
